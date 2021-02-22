@@ -39,8 +39,9 @@ export default makeStyles({
       fontSize: 15,
       flex: 1,
     },
-    '& .price': {
-      fontSize: 15,
+    '& .action': {
+      fontSize: 12,
+      padding: '2px 5px',
     },
   },
   footer: {

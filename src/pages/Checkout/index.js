@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import Grid from "@material-ui/core/Grid";
 import Container from '@material-ui/core/Container';
 
 //components
 import Cart from "../../components/Cart";
+import AllProducts from "../../components/AllProducts";
 
 const defaultBoughtProducts = [
   {
@@ -31,7 +32,14 @@ const Checkout = () => {
 
   return (
     <Container>
-      <Cart products={boughtProducts} />
+      <Grid container spacing={3}>
+        <Grid item xs={8}>
+          <AllProducts boughtProducts={boughtProducts} setBoughtProducts={setBoughtProducts} />
+        </Grid>
+        <Grid item xs={4}>
+          <Cart products={boughtProducts} setProducts={setBoughtProducts} />
+        </Grid>
+      </Grid>
     </Container>
   )
 };

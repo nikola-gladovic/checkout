@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import PropTypes from 'prop-types';
+import Button from "@material-ui/core/Button";
 
 import { useAllProducts } from "../../hooks/redux";
 import useStyles from "./style";
 
-const Cart = ({ products }) => {
+const Cart = ({ products, setProducts }) => {
   const classes = useStyles();
   const allProducts = useAllProducts();
   const [totalPrice, setTotalPrice] = useState(0);
@@ -21,6 +22,10 @@ const Cart = ({ products }) => {
     setTotalPrice(totalPrice);
   }, [products, getProduct]);
 
+  const removeProduct = useCallback((index) => {
+    setProducts(products.filter((_, i) => index !== i));
+  }, [products, setProducts]);
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
@@ -30,13 +35,12 @@ const Cart = ({ products }) => {
         <div className="head">
           <span className="no">No</span>
           <span className="name">Product name</span>
-          <span className="price">Price</span>
         </div>
         {products.map((product, index) => (
           <div key={index} className={classes.product}>
             <span className="no">{index + 1}</span>
             <span className="name">{getProduct(product.productId)?.name}</span>
-            <span className="price">{getProduct(product.productId)?.price}</span>
+            <Button className="action" onClick={() => removeProduct(index)}>Remove</Button>
           </div>
         ))}
       </div>
@@ -49,7 +53,13 @@ const Cart = ({ products }) => {
 };
 
 Cart.propTypes = {
-  products: PropTypes.object.isRequired,
+  products: PropTypes.array,
+  setProducts: PropTypes.func
+};
+
+Cart.defaultProps = {
+  products: [],
+  setProducts: () => {},
 };
 
 export default Cart;

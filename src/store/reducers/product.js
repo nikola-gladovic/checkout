@@ -35,6 +35,17 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case actionTypes.UPDATE_PRODUCT:
+      const allProducts = state.allProducts.map(product => {
+        if (product.id === action.payload.id) {
+          return action.payload;
+        }
+        return product;
+      });
+      return {
+        ...state,
+        allProducts
+      };
 
     default:
       return state;
