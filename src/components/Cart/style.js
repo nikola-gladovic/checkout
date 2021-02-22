@@ -40,8 +40,8 @@ export default makeStyles({
       flex: 1,
     },
     '& .action': {
-      fontSize: 12,
-      padding: '2px 5px',
+      fontSize: 10,
+      padding: '0px 5px',
     },
   },
   footer: {

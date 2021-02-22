@@ -16,9 +16,6 @@ export default makeStyles({
     padding: '30px 15px',
     display: 'flex',
     flexDirection: 'column',
-    '@media(max-width: 992px)': {
-      padding: '0 0 10px',
-    },
   },
   header: {
     textAlign: 'center',
@@ -31,10 +28,31 @@ export default makeStyles({
     padding: '0 20px',
     '& .form-control': {
       display: 'flex',
-      alignItems: 'center',
       margin: '10px 0',
+      '& .name': {
+        marginTop: 3,
+        display: 'block',
+      },
+      '& .offer': {
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'hidden',
+        flexWrap: 'wrap',
+        '& input': {
+          flex: 1,
+          minWidth: 50,
+        },
+        '& span': {
+          marginRight: 10,
+        },
+        '& .alert': {
+          width: '100%',
+          color: 'red',
+        }
+      },
       '& label': {
         marginRight: 5,
+        marginTop: 3,
       },
       '& input': {
         display: 'block',

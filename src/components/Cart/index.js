@@ -16,8 +16,27 @@ const Cart = ({ products, setProducts }) => {
 
   useEffect(() => {
     let totalPrice = 0;
-    products.forEach(product => {
-      totalPrice += getProduct(product.productId).price;
+    const productIds = [];
+    const sortedProducts = [];
+    for (const product of products) {
+      if (!productIds.includes(product.productId)) {
+        productIds.push(product.productId);
+      }
+    }
+    productIds.forEach((productId) => {
+      sortedProducts.push({
+        ...getProduct(productId),
+        count: products.filter(product => product.productId === productId).length
+      });
+    });
+    sortedProducts.forEach((product) => {
+      let price = 0;
+      if (product.offer) {
+        price = product.offer.price * Math.floor(product.count / product.offer.count) + (product.count % product.offer.count) * product.price;
+      } else {
+        price = product.price * product.count;
+      }
+      totalPrice += price;
     });
     setTotalPrice(totalPrice);
   }, [products, getProduct]);
@@ -40,7 +59,7 @@ const Cart = ({ products, setProducts }) => {
           <div key={index} className={classes.product}>
             <span className="no">{index + 1}</span>
             <span className="name">{getProduct(product.productId)?.name}</span>
-            <Button className="action" onClick={() => removeProduct(index)}>Remove</Button>
+            <Button className="action" variant="contained" onClick={() => removeProduct(index)}>Remove</Button>
           </div>
         ))}
       </div>
