@@ -38,8 +38,8 @@ const AllProducts = ({ boughtProducts, setBoughtProducts }) => {
                 <span>{product.name}s are {product.price} each or {product.offer.count} for {product.offer.price}</span>
               </div>}
               <div className="actions">
-                <Button variant="contained" color="primary" onClick={() => addToCart(product)}>Add To Cart</Button>
-                <Button variant="contained" color="primary" onClick={() => setEditProductNo(index + 1)}>Edit Product</Button>
+                <Button id={`add-product-btn-${index}`} variant="contained" color="primary" onClick={() => addToCart(product)}>Add To Cart</Button>
+                <Button id={`edit-product-btn-${index}`} variant="contained" color="primary" onClick={() => setEditProductNo(index + 1)}>Edit Product</Button>
               </div>
             </div>
           </div>

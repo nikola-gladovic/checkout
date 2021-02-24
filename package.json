@@ -22,7 +22,8 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "react-router-dom": "^5.2.0",
-    "history": "^5.0.0"
+    "history": "^5.0.0",
+    "cypress": "^5.2.0"
   },
   "homepage": "https://nikola-gladovic.github.io/checkout/",
   "scripts": {
@@ -30,8 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [

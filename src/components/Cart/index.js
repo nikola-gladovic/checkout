@@ -59,7 +59,7 @@ const Cart = ({ products, setProducts }) => {
           <div key={index} className={classes.product}>
             <span className="no">{index + 1}</span>
             <span className="name">{getProduct(product.productId)?.name}</span>
-            <Button className="action" variant="contained" onClick={() => removeProduct(index)}>Remove</Button>
+            <Button className="action" id={`remove-btn-${index}`} variant="contained" onClick={() => removeProduct(index)}>Remove</Button>
           </div>
         ))}
       </div>

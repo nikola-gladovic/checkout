@@ -85,14 +85,14 @@ const ProductEditorPanel = ({ isOpen, closePanel, product }) => {
             </div>
             <div className="form-control">
               <label>Price: </label>
-              <input type="number" value={price} onChange={(e) => setPrice(parseFloat(e.target.value))} />
+              <input type="number" name="price" value={price} onChange={(e) => setPrice(parseFloat(e.target.value))} />
             </div>
             <div className="form-control">
               <label>Offer: </label>
               <div className="offer">
-                <input type="number" value={offerCount} onChange={(e) => setOfferCount(parseFloat(e.target.value))} />
+                <input type="number" name="offer-count" value={offerCount} onChange={(e) => setOfferCount(parseFloat(e.target.value))} />
                 <span>for</span>
-                <input type="number" value={offerPrice} onChange={(e) => setOfferPrice(parseFloat(e.target.value))} />
+                <input type="number" name="offer-price" value={offerPrice} onChange={(e) => setOfferPrice(parseFloat(e.target.value))} />
                 {!canBeOffered &&
                 <div className="alert">Cannot offer {offerCount || 0} for {offerPrice || 0}</div>
                 }
@@ -100,8 +100,8 @@ const ProductEditorPanel = ({ isOpen, closePanel, product }) => {
             </div>
           </div>
           <div className={classes.footer}>
-            <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
-            <Button variant="contained" onClick={closePanel}>Cancel</Button>
+            <Button variant="contained" id="save-btn" color="primary" onClick={handleSave}>Save</Button>
+            <Button variant="contained" id="cancel-btn" onClick={closePanel}>Cancel</Button>
           </div>
         </div>
       </SwipeableDrawer>
